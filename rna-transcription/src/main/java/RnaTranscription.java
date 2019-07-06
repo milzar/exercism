@@ -1,24 +1,22 @@
+import java.util.HashMap;
+
 class RnaTranscription {
+    HashMap<Character,Character> hash = new HashMap<Character,Character>();
+    
+    RnaTranscription(){
+        hash.put('G', 'C');
+        hash.put('C','G');
+        hash.put('T','A');
+        hash.put('A','U');
+    }
 
     String transcribe(String dnaStrand) {
-      String result="";
+      StringBuilder result=new StringBuilder();
       for(char ch : dnaStrand.toCharArray()){
-          result+= complement(ch);
+          result.append( hash.get(ch) );
       }
-      return result;
+      return result.toString();
     }
 
-    char complement(char ch){
-      if(ch == 'G')
-        return 'C';
-      else if(ch == 'C')
-        return 'G';
-      else if(ch == 'T')
-        return 'A';
-      else if(ch == 'A')
-        return 'U';
-      else
-        return '.';
-    }
-
+    
 }

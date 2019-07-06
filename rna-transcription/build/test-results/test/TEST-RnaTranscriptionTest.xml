@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RnaTranscriptionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-07-03T13:24:02" hostname="shockdrone" time="0.016">
+<testsuite name="RnaTranscriptionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-07-06T19:22:24" hostname="Excalibur" time="0.006">
   <properties/>
-  <testcase name="testRnaTranscriptionOfThymineIsAdenine" classname="RnaTranscriptionTest" time="0.013"/>
-  <testcase name="testRnaTranscription" classname="RnaTranscriptionTest" time="0.001"/>
+  <testcase name="testRnaTranscriptionOfThymineIsAdenine" classname="RnaTranscriptionTest" time="0.001"/>
+  <testcase name="testRnaTranscription" classname="RnaTranscriptionTest" time="0.0"/>
   <testcase name="testRnaTranscriptionOfCytosineIsGuanine" classname="RnaTranscriptionTest" time="0.0"/>
   <testcase name="testEmptyRnaSequence" classname="RnaTranscriptionTest" time="0.0"/>
   <testcase name="testRnaTranscriptionOfGuanineIsCytosine" classname="RnaTranscriptionTest" time="0.0"/>
