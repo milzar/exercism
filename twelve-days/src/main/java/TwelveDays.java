@@ -1,42 +1,68 @@
+import java.util.HashMap;
+
 class TwelveDays {
-    String verse(int verseNumber) {
-        switch(verseNumber){
-          case 1:
-              return "On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.\n";
-          case 2:
-              return "On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 3:
-              return "On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 4:
-              return "On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 5:
-              return "On the fifth day of Christmas my true love gave to me: five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 6:
-              return "On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 7:
-              return "On the seventh day of Christmas my true love gave to me: seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 8:
-              return "On the eighth day of Christmas my true love gave to me: eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 9:
-              return "On the ninth day of Christmas my true love gave to me: nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 10:
-              return "On the tenth day of Christmas my true love gave to me: ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 11:
-              return "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
-          case 12:
-              return "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n";
+    HashMap<Integer,String> dayMap;
+    HashMap<Integer, String> verseMap;
+
+
+    TwelveDays(){
+        dayMap = new HashMap<Integer,String>();
+        verseMap= new HashMap<Integer, String>();
+        dayMap.put(1,"first");
+        dayMap.put(2,"second");
+        dayMap.put(3,"third");
+        dayMap.put(4,"fourth");
+        dayMap.put(5,"fifth");
+        dayMap.put(6,"sixth");
+        dayMap.put(7,"seventh");
+        dayMap.put(8,"eighth");
+        dayMap.put(9,"ninth");
+        dayMap.put(10,"tenth");
+        dayMap.put(11,"eleventh");
+        dayMap.put(12,"twelfth");
+
+        verseMap.put(1,"a Partridge in a Pear Tree");
+		verseMap.put(2,"two Turtle Doves");
+		verseMap.put(3,"three French Hens");
+		verseMap.put(4,"four Calling Birds");
+		verseMap.put(5,"five Gold Rings");
+		verseMap.put(6,"six Geese-a-Laying");
+		verseMap.put(7,"seven Swans-a-Swimming");
+		verseMap.put(8,"eight Maids-a-Milking");
+		verseMap.put(9,"nine Ladies Dancing");
+		verseMap.put(10,"ten Lords-a-Leaping");
+		verseMap.put(11,"eleven Pipers Piping");
+        verseMap.put(12,"twelve Drummers Drumming");
+        
+
+    }
+
+    String getVerseEnd(int verseNumber){
+        StringBuilder verseEnd = new StringBuilder();
+
+        for(int i=verseNumber;i>1;i--){
+            verseEnd.append(  String.format("%s, ", verseMap.get(i) )  );
+            if(i == 2)
+                verseEnd.append( String.format("and "));
         }
-        return "error";
+
+        verseEnd.append(verseMap.get(1));
+        
+        return verseEnd.toString();
+    }
+
+    String verse(int verseNumber) {
+        return String.format("On the %s day of Christmas my true love gave to me: %s.\n",dayMap.get(verseNumber), getVerseEnd(verseNumber));
     }
 
     String verses(int startVerse, int endVerse) {
-      String result="";
+      StringBuilder result  = new StringBuilder();
       for(int i=startVerse; i<=endVerse;i++){
-          result+= verse(i);
+          result.append( verse(i) );
           if(i<endVerse)
-            result+="\n";
+            result.append("\n");
       }
-      return result;
+      return result.toString();
     }
 
     String sing() {
